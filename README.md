@@ -1,2 +1,0 @@
-# AdvancedPy
-Clases Uteca
