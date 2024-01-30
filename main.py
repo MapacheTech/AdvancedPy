@@ -2,9 +2,9 @@ from lib import *
 
 
 
-obj_poly_1 = Poligono(10,18)
+"""obj_poly_1 = Poligono(10,18)
 print(obj_poly_1)
-"""print(f"Num lados: {obj_poly_1.numLado }")"""
+print(f"Num lados: {obj_poly_1.numLado }")
 print(obj_poly_1.nomPoly())
 print(obj_poly_1.periPoly())
 
@@ -35,4 +35,11 @@ except TypeError:
 except Exception as e:
     print(f"Error desconocido: {e} ")
 
-print("Hello2")
+print("Hello2")"""
+
+
+art1=art(10256,"Coca-Cola","Canada Dry 500ml")
+
+print(art1)
+art1.setPrecio(25.00)
+print(art1)
