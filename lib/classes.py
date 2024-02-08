@@ -15,15 +15,69 @@ class art:
     def setPrecio(self, precio):
         self.precio = precio
         return 0
-        
-class cart(art):
-     def __init__(self, marca, nombre, precio, peso, descuento, id, piezas, costoTotal, iva, ahorroTotal):
-         super().__init__(marca, nombre, precio, peso, descuento, id, piezas)
-         self.costoTotal = costoTotal
-         self.iva = iva
-         self.ahorroTotal = ahorroTotal
-         
-         
+    
+    def setPeso(self,peso):
+        self.peso = peso
+        return 0
+    
+    def setDescuento(self,descuento):
+        self.descuento = descuento
+        return 0
+    
+    def setInventario(self,inventario):
+        self.inventario = inventario
+        return 0
+    
+    def getPrecioDcto(self):
+        if self.descuento != None:
+            precioDescuento = self.precio - (self.precio * (self.descuento/100))
+        else:
+            precioDescuento = self.precio
+        return precioDescuento
+    
+    def getDcto(self):
+        if self.descuento != None:
+            precioDcto = ( self.precio * (self.descuento/100))
+        else:
+            precioDcto = 0
+        return precioDcto
+    
+class cart():
+    def __init__(self, idCart):
+         self.idCart = idCart
+         self.objArticulos = []        
          pass
+    
+    def __str__(self):
+        printCart = f"Ticket #: {self.idCart} \n"
+        if len(self.objArticulos) >= 1:
+            for i in range(0, len(self.objArticulos),1):
+                printCart += f"{self.objArticulos[i].id} {self.objArticulos[i].nombre} $ {self.objArticulos[i].precio} mxn\n -${self.objArticulos[i].getDcto()}mxn\n"
+        else:
+            printCart += f"Carrito vacio"
+        return printCart
+    
+    def addArticulo(self, objArt):
+        if type (objArt.inventario) != type(None):
+            if objArt.inventario >= 1:
+                objArt.inventario -= 1
+                self.objArticulos.append(objArt)
+            else:
+                print(f"No hay inventario de: ({objArt.nombre})")
+        else:
+            print("Inventario no definido")
+        return 0
+    def getTotal(self):
+        total = 0
+        for i in range(0, len(self.objArticulos),1):
+            total += self.objArticulos[i].getPrecioDcto()
+        return total 
+    
+    def getTotalDcto(self):
+        total = 0
+        for i in range(0, len(self.objArticulos),1):
+            total += self.objArticulos[i].getDcto()
+        return total 
+        pass
      
      
